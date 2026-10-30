@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, たまちゃん！</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main id="game">
+
+    <!-- タイトル画面 -->
+    <section id="title-screen" class="screen active">
+      <div class="title-content">
+        <p class="small-title">A SPECIAL DAY FOR YOU</p>
+        <h1>Happy Birthday!</h1>
+        <h2>たまちゃん</h2>
+        <div class="title-decoration">♡ ✧ ♡ ✧ ♡</div>
+        <p>今日はたまちゃんが主役の日。</p>
+        <p>小さなサプライズを用意したよ。</p>
+        <button id="start-button">ゲームスタート ♡</button>
+      </div>
+    </section>
+
+    <!-- ケーキ・ろうそく画面 -->
+    <section id="cake-screen" class="screen">
+      <p class="step-label">STEP 1</p>
+      <h2>お誕生日おめでとう！</h2>
+      <p>20本のろうそくを全部消してね。</p>
+
+      <div id="cake-area">
+
+        <!-- ろうそく20本 -->
+        <div id="candles">
+          <button class="candle" data-index="0">🕯️</button>
+          <button class="candle" data-index="1">🕯️</button>
+          <button class="candle" data-index="2">🕯️</button>
+          <button class="candle" data-index="3">🕯️</button>
+          <button class="candle" data-index="4">🕯️</button>
+          <button class="candle" data-index="5">🕯️</button>
+          <button class="candle" data-index="6">🕯️</button>
+          <button class="candle" data-index="7">🕯️</button>
+          <button class="candle" data-index="8">🕯️</button>
+          <button class="candle" data-index="9">🕯️</button>
+          <button class="candle" data-index="10">🕯️</button>
+          <button class="candle" data-index="11">🕯️</button>
+          <button class="candle" data-index="12">🕯️</button>
+          <button class="candle" data-index="13">🕯️</button>
+          <button class="candle" data-index="14">🕯️</button>
+          <button class="candle" data-index="15">🕯️</button>
+          <button class="candle" data-index="16">🕯️</button>
+          <button class="candle" data-index="17">🕯️</button>
+          <button class="candle" data-index="18">🕯️</button>
+          <button class="candle" data-index="19">🕯️</button>
+        </div>
+
+        <div class="cake">🎂</div>
+      </div>
+
+      <p id="cake-message">ろうそくをタップして消してね！</p>
+      <p id="candle-count">残り 20 本</p>
+    </section>
+
+    <!-- プレゼント画面 -->
+    <section id="gift-screen" class="screen">
+      <p class="step-label">STEP 2</p>
+      <h2>プレゼントを探そう！</h2>
+      <p>3つの箱の中にプレゼントが隠れているよ。</p>
+
+      <div id="gift-area">
+        <button class="gift-box" data-index="0">🎁</button>
+        <button class="gift-box" data-index="1">🎁</button>
+        <button class="gift-box" data-index="2">🎁</button>
+      </div>
+
+      <p id="gift-message">気になる箱を選んでね！</p>
+      <p id="gift-count">プレゼント発見：0 / 3</p>
+    </section>
+
+    <!-- 手紙画面 -->
+    <section id="letter-screen" class="screen">
+      <p class="step-label">FINAL STEP</p>
+      <h2>最後のサプライズ</h2>
+      <p>たまちゃんへの手紙が届いているよ。</p>
+
+      <button id="open-letter">💌 手紙を開く</button>
+
+      <div id="letter" class="letter hidden">
+        <h2>たまちゃんへ</h2>
+
+        <p>
+          お誕生日おめでとう！
+        </p>
+
+        <p>
+          今日はたまちゃんにとって、
+          笑顔いっぱいの素敵な一日になりますように。
+        </p>
+
+        <p>
+          一緒に過ごす時間や、映画を見たり、
+          何気ない話をしたりする時間が大切です。
+        </p>
+
+        <p>
+          いつもありがとう。
+          これからもたくさん思い出を作っていこうね。
+        </p>
+
+        <p class="letter-end">
+          生まれてきてくれてありがとう。
+        </p>
+
+        <p class="signature">大好きだよ ♡</p>
+      </div>
+
+      <p id="ending-message" class="hidden">
+        最後まで遊んでくれてありがとう！♡
+      </p>
+    </section>
+
+  </main>
+
+  <!-- 効果音・BGM -->
+  <script src="sound.js"></script>
+
+  <!-- ゲーム進行 -->
+  <script src="game.js"></script>
+
+</body>
+</html>

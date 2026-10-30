@@ -1,0 +1,418 @@
+/* =====================================
+   Happy Birthday, たまちゃん！
+   PC・スマートフォン対応デザイン
+===================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Yu Gothic", "Meiryo", sans-serif;
+  background:
+    radial-gradient(circle at 15% 20%, #fff 0 3px, transparent 4px),
+    radial-gradient(circle at 85% 30%, #fff 0 4px, transparent 5px),
+    linear-gradient(135deg, #ffe6ef, #fff5f8, #fff0d9);
+  background-size: 100px 100px, 130px 130px, cover;
+  color: #674b55;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ゲーム全体 */
+#game {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 各画面 */
+.screen {
+  display: none;
+  width: 100%;
+  max-width: 850px;
+  min-height: min(700px, calc(100dvh - 24px));
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.93);
+  border: 2px solid #ffd2df;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(190, 110, 140, 0.2);
+  text-align: center;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  animation: fadeIn 0.5s ease;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* タイトル画面 */
+.title-content {
+  width: 100%;
+}
+
+.small-title {
+  color: #d68ca6;
+  letter-spacing: 4px;
+  font-size: 0.8rem;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(2.3rem, 6vw, 4.5rem);
+  color: #d8799c;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #c66d91;
+  margin: 12px 0;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+}
+
+.title-content h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.title-decoration {
+  color: #e6a5bd;
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+.title-content p {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+/* ボタン共通 */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s, opacity 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+#start-button,
+#open-letter {
+  background: linear-gradient(135deg, #e995b2, #d8799c);
+  color: white;
+  padding: 14px 35px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 25px;
+  box-shadow: 0 5px 12px rgba(216, 121, 156, 0.25);
+}
+
+/* STEP表示 */
+.step-label {
+  color: #d68ca6;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.screen > p {
+  margin: 7px 0;
+}
+
+/* ケーキ・ろうそく */
+#cake-area {
+  position: relative;
+  width: min(100%, 550px);
+  height: clamp(230px, 38vh, 300px);
+  margin: 12px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle, #fff 1px, transparent 2px),
+    linear-gradient(180deg, #fff8fb, #ffeaf1);
+  background-size: 25px 25px, cover;
+  border: 2px solid #f3bfd0;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+#candles {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 2;
+}
+
+.candle {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  font-size: 1.6rem;
+  padding: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  z-index: 2;
+}
+
+.candle:hover {
+  filter: drop-shadow(0 0 7px #ffc45c);
+}
+
+.candle.blown {
+  opacity: 0.65;
+  cursor: default;
+  filter: grayscale(0.3);
+}
+
+.cake {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  pointer-events: none;
+  font-size: clamp(4rem, 10vw, 6rem);
+  filter: drop-shadow(0 5px 5px rgba(150, 90, 100, 0.15));
+}
+
+#cake-message {
+  color: #c66d91;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#candle-count {
+  color: #a66c82;
+  font-weight: bold;
+}
+
+/* プレゼント画面 */
+#gift-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin: 35px 0;
+  flex-wrap: wrap;
+}
+
+.gift-box {
+  background: linear-gradient(135deg, #fff0f5, #ffe1eb);
+  border: 2px solid #f3bfd0;
+  border-radius: 20px;
+  width: 110px;
+  height: 110px;
+  font-size: 3.5rem;
+  box-shadow: 0 5px 12px rgba(190, 110, 140, 0.15);
+}
+
+.gift-box.opened {
+  background: #fff8e8;
+  border-color: #f0d49a;
+  cursor: default;
+}
+
+#gift-message {
+  color: #c66d91;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+#gift-count {
+  margin-top: 10px;
+}
+
+/* 手紙画面 */
+#open-letter {
+  margin: 20px 0;
+}
+
+.letter {
+  background: linear-gradient(135deg, #fffdf6, #fff7e9);
+  border: 2px solid #eed9b6;
+  border-radius: 15px;
+  padding: 25px;
+  width: 100%;
+  max-width: 600px;
+  margin: 15px auto;
+  box-shadow: 0 5px 15px rgba(150, 120, 80, 0.12);
+  text-align: left;
+  line-height: 1.9;
+  animation: fadeIn 0.8s ease;
+}
+
+.letter h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.letter p {
+  margin: 12px 0;
+}
+
+.letter-end {
+  text-align: center;
+  color: #c66d91;
+  font-weight: bold;
+  margin-top: 25px !important;
+}
+
+.signature {
+  text-align: right;
+  color: #d8799c;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#ending-message {
+  color: #d8799c;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* =====================================
+   スマートフォン対応
+===================================== */
+
+@media (max-width: 600px) {
+
+  #game {
+    padding: 6px;
+    align-items: stretch;
+  }
+
+  .screen {
+    min-height: calc(100dvh - 12px);
+    padding: 20px 12px;
+    border-radius: 18px;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 10vw, 3.2rem);
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  .title-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .title-decoration {
+    font-size: 1.7rem;
+    margin: 15px 0;
+  }
+
+  #cake-area {
+    height: min(36vh, 280px);
+    min-height: 220px;
+    margin: 12px auto;
+  }
+
+  .candle {
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+  }
+
+  .cake {
+    font-size: 4.5rem;
+  }
+
+  #gift-area {
+    gap: 12px;
+    margin: 25px 0;
+  }
+
+  .gift-box {
+    width: min(25vw, 95px);
+    height: min(25vw, 95px);
+    font-size: 2.8rem;
+  }
+
+  #start-button,
+  #open-letter {
+    min-height: 50px;
+    padding: 13px 28px;
+    font-size: 1rem;
+  }
+
+  .letter {
+    padding: 16px;
+    font-size: 0.92rem;
+  }
+}
+
+/* 横向きスマホ・画面の高さが小さい場合 */
+@media (max-height: 600px) and (max-width: 900px) {
+
+  #game {
+    align-items: flex-start;
+  }
+
+  .screen {
+    min-height: calc(100dvh - 12px);
+    padding: 10px;
+  }
+
+  #cake-area {
+    height: 190px;
+    min-height: 190px;
+  }
+
+  .title-decoration {
+    margin: 5px 0;
+  }
+
+  #gift-area {
+    margin: 10px 0;
+  }
+
+  .gift-box {
+    width: 75px;
+    height: 75px;
+    font-size: 2.3rem;
+  }
+}
